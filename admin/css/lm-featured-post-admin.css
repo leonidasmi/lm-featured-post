@@ -1,0 +1,12 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+.form-text-line{
+	padding: 10px;
+}
+.form-text-line label{
+	float: left;
+    margin-top: 5px;
+    min-width: 170px;
+}

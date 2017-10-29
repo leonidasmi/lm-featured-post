@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-28 13:22+0300\n"
+"PO-Revision-Date: 2017-10-28 13:25+0300\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: el\n"
+
+#: admin/class-lm-featured-post-admin-metaboxes.php:77
+#: admin/class-lm-featured-post-admin.php:171
+msgid "Featured Post"
+msgstr "Επιλεγμένο Άρθρο"
+
+#: admin/class-lm-featured-post-admin-metaboxes.php:188
+msgid "Make this post a Featured Post."
+msgstr "Επέλεξε αυτό το άρθρο σαν Επιλεγμένο Άρθρο."
+
+#: admin/class-lm-featured-post-admin-metaboxes.php:193
+msgid "Featured Post Title"
+msgstr "Τίτλος Επιλεγμένου Άρθρου"
+
+#: admin/class-lm-featured-post-admin-metaboxes.php:200
+msgid "This Featured Post has an expiration date."
+msgstr "Αυτό το επιλεγμένο άρθρο έχει ημερομηνία λήξης."
+
+#: admin/class-lm-featured-post-admin-metaboxes.php:205
+msgid "Expiration Date"
+msgstr "Ημερομηνία Λήξης"
+
+#: admin/class-lm-featured-post-admin-metaboxes.php:207
+msgid "Expiration Time"
+msgstr "Ώρα Λήξης"
+
+#: admin/class-lm-featured-post-admin.php:121
+#: admin/class-lm-featured-post-admin.php:122
+#: admin/class-lm-featured-post-admin.php:158
+msgid "Featured Post Options"
+msgstr "Επιλογές Επιλεγμένου Άρθρου"
+
+#: admin/class-lm-featured-post-admin.php:165
+msgid "Featured Post Headline"
+msgstr "Επικεφαλίδα Επιλεγμένου Άρθρου"
+
+#: admin/class-lm-featured-post-admin.php:177
+msgid "Background Color"
+msgstr "Χρώμα Φόντου"
+
+#: admin/class-lm-featured-post-admin.php:189
+msgid "Text Color"
+msgstr "Χρώμα Κειμένου"
+
+#: admin/class-lm-featured-post-admin.php:201
+msgid "Where to place the Featured Post"
+msgstr "Που θα τοποθετηθεί το Επιλεγμένο Άρθρο"
+
+#: admin/class-lm-featured-post-admin.php:207
+msgid "The Featured Post will be displayed only to the checked locations."
+msgstr "Το Επιλεγμένο Άρθρο θα τοποθετηθεί μόνο στις επιλεγμένες τοποθεσίες."
+
+#: admin/class-lm-featured-post-admin.php:327
+msgid "Below the menu (Default)"
+msgstr "Κάτω από το μενού (Προεπιλογή)"
+
+#: admin/class-lm-featured-post-admin.php:331
+msgid "At the top of the header"
+msgstr "Στην κορυφή της κεφαλίδας"
+
+#: admin/partials/lm-featured-post-admin-display.php:58
+msgid "Current Featured Post"
+msgstr "Παρόν Επιλεγμένο Άρθρο"
+
+#: includes/class-lm-featured-post-sanitize.php:134
+msgid "Specify the data type to sanitize."
+msgstr ""
+
+#: includes/class-lm-featured-post-sanitize.php:140
+msgid "Forgot data type"
+msgstr ""
