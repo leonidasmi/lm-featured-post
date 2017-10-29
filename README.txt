@@ -7,7 +7,7 @@ Stable tag: 1.0.0
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
-Mark a post as "Featured Post".
+Custom WordPress plugin to add the functionality to mark a post as "Featured Post".
 
 == Description ==
 
