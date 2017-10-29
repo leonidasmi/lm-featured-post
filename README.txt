@@ -1,8 +1,15 @@
-# LM Featured Post
+=== LM Featured Post ===
+Contributors: leonidasmi
+Tags: featured post
+Requires at least: 3.0
+Tested up to: 4.8.2
+Stable tag: 1.0.0
+License: MIT License
+License URI: https://opensource.org/licenses/MIT
 
 Custom WordPress plugin to add the functionality to mark a post as "Featured Post".
 
-## Description
+== Description ==
 
 Created for purposes of demonstration, supported for distribution and free use.
 
@@ -12,14 +19,14 @@ When a post is set as Featured Post, a ribbon appears at every page of the site 
 
 The plugin uses [WordPress Plugin Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate) for the data structure and [TimePicki](https://github.com/senthilraj/TimePicki) for the time picker of the expiration date for a Featured Post post.
 
-## Features
+**Features:**
 
 * You can choose the settings(colors, headline) of the Featured Post area.
 * You can pick where to display the Featured Post area.
 * You can set an expiration time for the Featured Post to be active.
 * You can type a custom title for the Featured Post.
 
-## Installation
+== Installation ==
 
 1. [Download the plugin](https://github.com/leonidasmi/LMFeaturedPost/archive/master.zip).
 2. Go to WordPress admin area.
@@ -28,16 +35,21 @@ The plugin uses [WordPress Plugin Boilerplate](https://github.com/DevinVinson/Wo
 5. Click on Install Now button.
 6. Click on Activate Plugin.
 
-## Known bugs
+== Known bugs ==
 
  * The functionality must be limited only for the administrator.
 
-## Links
+== Links ==
 
 * [WordPress Plugin Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate)
 * [TimePicki](https://github.com/senthilraj/TimePicki)
 
-## License
+== Changelog ==
+
+= 1.0.0 =
+* Initial Release.
+
+== License ==
 
 LM Featured Post is licensed under the MIT License.
 
