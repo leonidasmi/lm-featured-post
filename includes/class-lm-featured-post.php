@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -177,13 +176,12 @@ class Lm_Featured_Post {
 
 		$plugin_admin = new Lm_Featured_Post_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		// Hook our settings page
+		// Hook our settings page.
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'register_settings_page' );
 
-		// Hook our settings
+		// Hook our settings.
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
 
-		//
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'lmfp_expiration_check' );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
@@ -194,12 +192,12 @@ class Lm_Featured_Post {
 	/**
 	 * Register all of the hooks related to metaboxes
 	 *
-	 * @since 		1.0.0
-	 * @access 		private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function define_metabox_hooks() {
 
-		$plugin_metaboxes = new Lm_Featured_Post_Metaboxes( $this->get_plugin_name(), $this->get_version() );
+		$plugin_metaboxes = new Lm_Featured_Post_Admin_Metaboxes( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'add_meta_boxes', $plugin_metaboxes, 'add_metaboxes' );
 		$this->loader->add_action( 'add_meta_boxes', $plugin_metaboxes, 'set_meta' );
@@ -220,7 +218,7 @@ class Lm_Featured_Post {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-		//Display the current featured post
+		// Display the current featured post.
 		$this->loader->add_action( 'get_header', $plugin_public, 'lmfp_display_featuredpost' );
 
 	}

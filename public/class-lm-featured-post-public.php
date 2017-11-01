@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -43,9 +42,9 @@ class Lm_Featured_Post_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @since 1.0.0
+	 * @param      string $plugin_name The name of the plugin.
+	 * @param      string $version     The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -106,120 +105,8 @@ class Lm_Featured_Post_Public {
 	 * @since    1.0.0
 	 */
 	public function lmfp_display_featuredpost() {
-		//Get the Featured Post
-		$myquery = new WP_Query( "post_type=post&meta_key=lmfp_is_featuredpost&meta_value=1" );
 
-		// The Loop
-		if ( $myquery->have_posts() ) {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/lm-featured-post-public-display.php';
 
-			//// Website Options
-			$lmfp_style	= 'display: none;';
-			$lmfp_style_a = '';
-
-			// Change the colours
-			$options = get_option( $this->plugin_name . '-settings' );
-			$lmfp_bg = $options[ 'lmfp_bgcolor_featuredpost' ];
-			$lmfp_color = $options[ 'lmfp_color_featuredpost' ];
-
-			if ( $lmfp_bg ){
-
-				$lmfp_style .= 'background-color: ' . $lmfp_bg . '; ';
-
-			}
-			if ( $lmfp_color ){
-
-				$lmfp_style_a .= 'color: ' . $lmfp_color . '; ';
-
-			}
-
-			// Change the headline
-			if ( $options[ 'lmfp_headline_featuredpost'] ){
-
-				$lmfp_headline = $options[ 'lmfp_headline_featuredpost'] . ': ';
-
-			} else {
-
-				$lmfp_headline = 'Featured Post' . ': ';
-
-			}
-
-			// Change the display placement 
-			if ( $options[ 'lmfp_placement_featuredpost'] ){
-
-					$lmfp_placements = array();
-
-				foreach ( $options[ 'lmfp_placement_featuredpost'] as $option) {
-					
-					if ( $option == 'top_header' )	
-						array_push( $lmfp_placements, "top-header" );
-					if ( $option == 'under_header' )					
-						array_push( $lmfp_placements, "under-header" );
-				}
-
-			} else {
-				
-				$lmfp_placements[0] = 'under-header';
-
-			}
-
-			while ( $myquery->have_posts() ) {
-
-				$myquery->the_post();
-				$show_featured_post = false;
-
-				//Check if post has expired
-				if( get_post_meta( get_the_ID(), 'lmfp_has_expiration_date', true ) == 1 ){
-
-					if( get_post_meta( get_the_ID(), 'lmfp_expiration_date', true ) ){
-
-						$time = current_time( 'Y-m-d');
-						$expiration_date = get_post_meta( get_the_ID(), 'lmfp_expiration_date', true );
-
-						if( get_post_meta( get_the_ID(), 'lmfp_expiration_time', true ) ){
-
-							$time = current_time( 'Y-m-d H:i');
-							$expiration_date = get_post_meta( get_the_ID(), 'lmfp_expiration_date', true ) . ' ' . get_post_meta( get_the_ID(), 'lmfp_expiration_time', true );
-
-						}
-
-						if( $time <= $expiration_date) {
-
-							$show_featured_post = true;
-
-						}
-
-					} else {
-
-						$show_featured_post = true;
-
-					}
-				} else {
-
-					$show_featured_post = true;
-
-				}
-
-				if( $show_featured_post == true ){
-
-					foreach ($lmfp_placements as $lmfp_placement) {
-
-						//Display Featured Post
-						echo '<div class="lmfp-featuredpost ' . $lmfp_placement .  '" id="lmfp-featuredpost" style="' . $lmfp_style . '"" >';
-
-						if( get_post_meta( get_the_ID(), 'lmfp_custom_title', true ) ) {
-
-							$lmfp_title = get_post_meta( get_the_ID(), 'lmfp_custom_title', true );
-
-						} else {
-							$lmfp_title = get_the_title();
-
-						}
-
-						echo '<a href="' . get_the_permalink() . '" style="' . $lmfp_style_a . '" ><strong>' . $lmfp_headline . '</strong>' . $lmfp_title . '</a>';
-						echo '</div>';
-					}
-				}
-			}
-		}
 	}
 }

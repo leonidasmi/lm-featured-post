@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired during plugin deactivation
  *
@@ -31,7 +30,7 @@ class Lm_Featured_Post_Deactivator {
 	 */
 	public static function deactivate() {
 
-		// Delete plugin settings
+		// Delete plugin settings.
 		delete_option( 'lm-featured-post-settings' );
 
 	}

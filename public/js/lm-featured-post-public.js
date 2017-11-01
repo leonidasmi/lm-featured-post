@@ -29,20 +29,19 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-
 	$(function() {
-		
-	    if ($( '.under-header' ).length){
-	        $( "header" ).after( $('.under-header') );
-	        // If we want the featured post to be displayed inside the header we can use instead: 
-	        // $( "header" ).append( $('.under-header') );
-	        $( '.under-header' ).show();
-	    }
 
-	    if ($( '.top-header' ).length){       	
-			$('.top-header').prependTo( "body" );
-	        $( '.top-header' ).show();
-	    }
+		if ($( '.under-header' ).length) {
+			$( 'header' ).after( $( '.under-header' ) );
+			// If we want the featured post to be displayed inside the header we can use instead:
+			// $( "header" ).append( $('.under-header') );
+			$( '.under-header' ).show();
+		}
 
-     });
+		if ($( '.top-header' ).length ) {
+			$( '.top-header' ).prependTo( 'body' );
+			$( '.top-header' ).show();
+		}
+
+	});
 })( jQuery );

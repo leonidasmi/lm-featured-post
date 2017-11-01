@@ -5,10 +5,10 @@
  .lmfp-featuredpost{
 	width: 100%;
 	background-color: #333333;
-    position: relative;
-    padding: 7px 20px;
+	position: relative;
+	padding: 7px 20px;
 }
-.lmfp-featuredpost a{ 
-    color: #ffd600;
-    font-size: 17px;
+.lmfp-featuredpost a{
+	color: #ffd600;
+	font-size: 17px;
 }

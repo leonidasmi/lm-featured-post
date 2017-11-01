@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -44,8 +43,8 @@ class Lm_Featured_Post_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -103,7 +102,7 @@ class Lm_Featured_Post_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/lm-featured-post-admin.js', array( 'wp-color-picker' ), $this->version, false );
 
 		wp_enqueue_script( 'jquery-ui-datepicker' );
-    	wp_enqueue_style( 'jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+		wp_enqueue_style( 'jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
 
 		wp_enqueue_script( 'timepicki', plugin_dir_url( __FILE__ ) . 'js/lib/timepicki.js', array( 'jquery' ), $this->version, false );
 
@@ -118,12 +117,12 @@ class Lm_Featured_Post_Admin {
 
 		// Create our settings page as a menu page.
 		add_menu_page(
-			__( 'Featured Post Options', 'lm-featured-post' ),      // page title
-			__( 'Featured Post Options', 'lm-featured-post' ),      // menu title
+			__( 'Featured Post Options', 'lm-featured-post' ),
+			__( 'Featured Post Options', 'lm-featured-post' ),
 			'manage_options',
 			'featured-post',
-			array( $this, 'display_settings_page' )  // callable function
-		 );
+			array( $this, 'display_settings_page' )
+		);
 
 	}
 
@@ -168,7 +167,7 @@ class Lm_Featured_Post_Admin {
 			$this->plugin_name . '-settings-section',
 			array(
 				'label_for' => 'lmfp_headline_featuredpost',
-				'default'   => __( 'Featured Post', 'lm-featured-post' )
+				'default'   => __( 'Featured Post', 'lm-featured-post' ),
 			)
 		);
 
@@ -180,7 +179,7 @@ class Lm_Featured_Post_Admin {
 			$this->plugin_name . '-settings-section',
 			array(
 				'label_for' => 'lmfp_bgcolor_featuredpost',
-				'default'   => '#333333'
+				'default'   => '#333333',
 			)
 		);
 
@@ -192,7 +191,7 @@ class Lm_Featured_Post_Admin {
 			$this->plugin_name . '-settings-section',
 			array(
 				'label_for' => 'lmfp_color_featuredpost',
-				'default'   => '#ffd600'
+				'default'   => '#ffd600',
 			)
 		);
 
@@ -204,7 +203,7 @@ class Lm_Featured_Post_Admin {
 			$this->plugin_name . '-settings-section',
 			array(
 				'label_for' => 'lmfp_placement_featuredpost',
-				'description' => __( 'The Featured Post will be displayed only to the checked locations.', 'lm-featured-post' )
+				'description' => __( 'The Featured Post will be displayed only to the checked locations.', 'lm-featured-post' ),
 			)
 		);
 
@@ -214,15 +213,18 @@ class Lm_Featured_Post_Admin {
 	 * Sandbox our settings.
 	 *
 	 * @since    1.0.0
+	 * @access public
+	 * @param  mixed $input The input of the settings.
+	 * @return mixed The new input.
 	 */
 	public function sandbox_register_setting( $input ) {
 
 		$new_input = array();
 
 		if ( isset( $input ) ) {
-			// Loop trough each input and sanitize the value if the input id isn't post-types
+			// Loop trough each input and sanitize the value if the input id isn't post-types.
 			foreach ( $input as $key => $value ) {
-				if ( $key == 'lmfp_placement_featuredpost' ) {
+				if ( 'lmfp_placement_featuredpost' == $key ) {
 					$new_input[ $key ] = $value;
 				} else {
 					$new_input[ $key ] = sanitize_text_field( $value );
@@ -241,14 +243,15 @@ class Lm_Featured_Post_Admin {
 	 */
 	public function sandbox_add_settings_section() {
 
-		return;
-
 	}
 
 	/**
 	 * Sandbox our inputs with text
 	 *
 	 * @since    1.0.0
+	 * @access public
+	 * @param  mixed $args The arguments of the input text.
+	 * @return void.
 	 */
 	public function sandbox_add_settings_field_input_text( $args ) {
 
@@ -266,7 +269,7 @@ class Lm_Featured_Post_Admin {
 
 		?>
 		
-			<input type="text" name="<?php echo $this->plugin_name . '-settings[' . $field_id . ']'; ?>" id="<?php echo $this->plugin_name . '-settings[' . $field_id . ']'; ?>" value="<?php echo esc_attr( $option ); ?>" class="regular-text" />
+			<input type="text" name="<?php echo esc_attr( $this->plugin_name . '-settings[' . $field_id . ']' ); ?>" id="<?php echo esc_attr( $this->plugin_name . '-settings[' . $field_id . ']' ); ?>" value="<?php echo esc_attr( $option ); ?>" class="regular-text" />
 
 		<?php
 
@@ -276,6 +279,7 @@ class Lm_Featured_Post_Admin {
 	 * Sandbox our inputs with text
 	 *
 	 * @since    1.0.0
+	 * @param  mixed $args The arguments of the color input.
 	 */
 	public function sandbox_add_settings_field_input_color( $args ) {
 
@@ -285,7 +289,7 @@ class Lm_Featured_Post_Admin {
 		$options = get_option( $this->plugin_name . '-settings' );
 		$option = $field_default;
 
-		if ( ! empty( $options[ $field_id ] ) && preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $options[ $field_id ] ) ) {
+		if ( ! empty( $options[ $field_id ] ) && preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $options[ $field_id ] ) ) {
 
 			$option = $options[ $field_id ];
 
@@ -293,7 +297,7 @@ class Lm_Featured_Post_Admin {
 
 		?>
 		
-			<input type="color" class="color-field" name="<?php echo $this->plugin_name . '-settings[' . $field_id . ']'; ?>" id="<?php echo $this->plugin_name . '-settings[' . $field_id . ']'; ?>" value="<?php echo esc_attr( $option ); ?>" />
+			<input type="color" class="color-field" name="<?php echo esc_attr( $this->plugin_name . '-settings[' . $field_id . ']' ); ?>" id="<?php echo esc_attr( $this->plugin_name . '-settings[' . $field_id . ']' ); ?>" value="<?php echo esc_attr( $option ); ?>" />
 
 		<?php
 
@@ -303,6 +307,7 @@ class Lm_Featured_Post_Admin {
 	 * Sandbox our multiple checkboxes
 	 *
 	 * @since    1.0.0
+	 * @param  mixed $args The arguments of the multiple checkbox.
 	 */
 	public function sandbox_add_settings_field_multiple_checkbox( $args ) {
 
@@ -320,18 +325,18 @@ class Lm_Featured_Post_Admin {
 			$option[0] = 'under_header';
 		}
 
-		if ( $field_id == 'lmfp_placement_featuredpost' ) {
+		if ( 'lmfp_placement_featuredpost' == $field_id ) {
 
 			$featured_post_places = array(
-										    array(
-										        'name' => __('Below the menu (Default)', 'lm-featured-post'),
-										        'id' => 'under_header'
-										    ),
-											array(
-										        'name' => __('At the top of the header', 'lm-featured-post'),
-										        'id' => 'top_header'
-										    )
-										);
+				array(
+					'name' => __( 'Below the menu (Default)', 'lm-featured-post' ),
+					'id'   => 'under_header',
+				),
+				array(
+					'name' => __( 'At the top of the header', 'lm-featured-post' ),
+					'id'   => 'top_header',
+				),
+			);
 
 			foreach ( $featured_post_places as $featured_post_place ) {
 
@@ -344,16 +349,15 @@ class Lm_Featured_Post_Admin {
 				?>
 
 					<fieldset>
-						<label for="<?php echo $this->plugin_name . '-settings[' . $field_id . '][' . $featured_post_place['id'] . ']'; ?>">
-							<input type="checkbox" name="<?php echo $this->plugin_name . '-settings[' . $field_id . '][]'; ?>" id="<?php echo $this->plugin_name . '-settings[' . $field_id . '][' . $featured_post_place['id'] . ']'; ?>" value="<?php echo esc_attr( $featured_post_place['id'] ); ?>" <?php echo $checked; ?> />
+						<label for="<?php echo esc_attr( $this->plugin_name . '-settings[' . $field_id . '][' . $featured_post_place['id'] . ']' ); ?>">
+							<input type="checkbox" name="<?php echo esc_attr( $this->plugin_name . '-settings[' . $field_id . '][]' ); ?>" id="<?php echo esc_attr( $this->plugin_name . '-settings[' . $field_id . '][' . $featured_post_place['id'] . ']' ); ?>" value="<?php echo esc_attr( $featured_post_place['id'] ); ?>" <?php echo esc_attr( $checked ); ?> />
 							<span class="description"><?php echo esc_html( $featured_post_place['name'] ); ?></span>
 						</label>
 					</fieldset>
 
-				<?php				
+				<?php
 
 			}
-
 		}
 
 		?>
@@ -365,47 +369,46 @@ class Lm_Featured_Post_Admin {
 	}
 
 	/**
-	 * Sandbox our inputs with text
+	 * Checks if the featured post is expired with every page load
 	 *
 	 * @since    1.0.0
 	 */
-	public function lmfp_expiration_check( $args ) {
-		//Get the Featured POst
-		$myquery = new WP_Query( "post_type=post&meta_key=lmfp_is_featuredpost&meta_value=1" );
+	public function lmfp_expiration_check() {
+		// Get the Featured Post.
+		$myquery = new WP_Query( 'post_type=post&meta_key=lmfp_is_featuredpost&meta_value=1' );
 
 		if ( $myquery->have_posts() ) {
 			while ( $myquery->have_posts() ) {
 				$myquery->the_post();
 				$expire_featured_post = false;
 
-				//Check if post has expired
-				if( get_post_meta( get_the_ID(), 'lmfp_has_expiration_date', true ) && get_post_meta( get_the_ID(), 'lmfp_expiration_date', true ) ){
-					$time = current_time( 'Y-m-d');
+				// Check if post has expired.
+				if ( get_post_meta( get_the_ID(), 'lmfp_has_expiration_date', true ) && get_post_meta( get_the_ID(), 'lmfp_expiration_date', true ) ) {
+					$time = current_time( 'Y-m-d' );
 					$expiration_date = get_post_meta( get_the_ID(), 'lmfp_expiration_date', true );
 
-					if( get_post_meta( get_the_ID(), 'lmfp_expiration_time', true ) ){
-						$time = current_time( 'Y-m-d H:i');
+					if ( get_post_meta( get_the_ID(), 'lmfp_expiration_time', true ) ) {
+						$time = current_time( 'Y-m-d H:i' );
 						$expiration_date = get_post_meta( get_the_ID(), 'lmfp_expiration_date', true ) . ' ' . get_post_meta( get_the_ID(), 'lmfp_expiration_time', true );
 					}
 
-					if( $time > $expiration_date){
+					if ( $time > $expiration_date ) {
 						$expire_featured_post = true;
 					}
-
 				}
 
-				if( $expire_featured_post == true ){
-				    delete_post_meta( get_the_ID(), 'lmfp_is_featuredpost');
-				    delete_post_meta( get_the_ID(), 'lmfp_custom_title');
-				    delete_post_meta( get_the_ID(), 'lmfp_has_expiration_date');
-				    delete_post_meta( get_the_ID(), 'lmfp_expiration_date');
-				    delete_post_meta( get_the_ID(), 'lmfp_expiration_time');
+				if ( true == $expire_featured_post ) {
+					delete_post_meta( get_the_ID(), 'lmfp_is_featuredpost' );
+					delete_post_meta( get_the_ID(), 'lmfp_custom_title' );
+					delete_post_meta( get_the_ID(), 'lmfp_has_expiration_date' );
+					delete_post_meta( get_the_ID(), 'lmfp_expiration_date' );
+					delete_post_meta( get_the_ID(), 'lmfp_expiration_time' );
 				}
 			}
 		}
 
 		wp_reset_postdata();
-	
+
 	}
 
 }

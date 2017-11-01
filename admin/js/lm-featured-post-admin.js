@@ -29,31 +29,28 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-    // Add Color Picker to all inputs that have 'color-field' class
-    $(function() {
-        $('.color-field').wpColorPicker();
+	// Add Color Picker to all inputs that have 'color-field' class.
+	$(function() {
+		$( '.color-field' ).wpColorPicker();
 
-		$('#has_expiration_date').click(function() {
-		    $("#expiration-datetime").slideToggle(this.checked);
+		$( '#has_expiration_date' ).click(function() {
+			$( '#expiration-datetime' ).slideToggle( this.checked );
 		});
 
-		$('.timepicker').timepicki({
-				show_meridian:false,
-				min_hour_value:0,
-				max_hour_value:23,
-				step_size_minutes:1,
-				overflow_minutes:true,
-				increase_direction:'up',
-				disable_keyboard_mobile: true
+		$( '.timepicker' ).timepicki({
+			show_meridian:false,
+			min_hour_value:0,
+			max_hour_value:23,
+			step_size_minutes:1,
+			overflow_minutes:true,
+			increase_direction:'up',
+			disable_keyboard_mobile: true
 		});
 
-	    $('.MyDate').datepicker({
-	        dateFormat : 'yy-mm-dd'
-	    });
+		$( '.MyDate' ).datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
 
-    });
-
-
-
+	});
 
 })( jQuery );
