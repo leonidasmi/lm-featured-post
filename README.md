@@ -21,7 +21,7 @@ The plugin uses [WordPress Plugin Boilerplate](https://github.com/DevinVinson/Wo
 
 ## Installation
 
-1. [Download the plugin](https://github.com/leonidasmi/LMFeaturedPost/archive/master.zip).
+1. [Download the plugin](https://github.com/leonidasmi/lm-featured-post/archive/master.zip).
 2. Go to WordPress admin area.
 3. Click on Plugins > Add New > Upload Plugin.
 4. Click on Choose File and select **lm-featured-post.zip**
